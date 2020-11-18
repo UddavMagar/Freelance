@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>818182088156-6nodv6jvf5d59r7lhtsuev456g4ei9rk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.818182088156-6nodv6jvf5d59r7lhtsuev456g4ei9rk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC4mTDEwZuwXKRoopI2Nt_4QrZ5ILIAbeY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>818182088156</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.freelance</string>
+	<key>PROJECT_ID</key>
+	<string>freelance-5981a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>freelance-5981a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:818182088156:ios:8adc63427966e087df1b19</string>
+	<key>DATABASE_URL</key>
+	<string>https://freelance-5981a.firebaseio.com</string>
+</dict>
+</plist>
