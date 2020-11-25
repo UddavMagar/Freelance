@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freelance/Screens/Profile.dart';
 
 class MyBottomNavigationBar extends StatefulWidget {
 
@@ -47,15 +48,17 @@ class BottomNav extends StatelessWidget {
   int index;
   String pages;
   bool isActive;
+  String userName;
+  String imageName;
 
 
-  BottomNav({this.icon,this.index,this.icontitle,this.pages,this.isActive});
+  BottomNav({this.icon,this.index,this.icontitle,this.pages,this.isActive,this.userName,this.imageName});
 
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: (){
-        Navigator.pushReplacementNamed(context, pages);
+        Navigator.pushNamed(context, pages);
       },
       child: Container(
           height: 60.0,

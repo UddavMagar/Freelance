@@ -4,20 +4,23 @@ import 'package:freelance/Screens/ProjectAvailable.dart';
 import 'package:freelance/Screens/currentJob.dart';
 import 'package:freelance/Widgets/bottomnavigation.dart';
 import 'package:freelance/data/data.dart';
+import 'package:freelance/Models/currentuser.dart';
 
 
 
 
 class DashBoard extends StatefulWidget {
-
   @override
   _DashBoardState createState() => _DashBoardState();
 }
 
 class _DashBoardState extends State<DashBoard> {
+
   int hourHand;
 
+
   String greet;
+
 
   void Time(){
     DateTime now = DateTime.now();
@@ -29,6 +32,7 @@ class _DashBoardState extends State<DashBoard> {
       greet='Afternoon';
     }
       }
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +53,17 @@ class _DashBoardState extends State<DashBoard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                       Text('Good ${greet},',style: TextStyle(fontSize: 20,fontFamily: 'Pacifico',color: Colors.black45),),
-                    Text('Uddav',style: TextStyle(fontSize: 25,fontFamily: 'Pacifico',color: Colors.black87),),
+                      Text(cuser.cuserName,style: TextStyle(fontSize: 25,fontFamily: 'Pacifico',color: Colors.black87),),
                   ],
                 ),
                   Padding(
                     padding: EdgeInsets.only(left: 130.0),
                     child: CircleAvatar(
                       radius: 25.0,
-                      backgroundImage: AssetImage('images/myphoto.png'),
+                      backgroundImage: AssetImage(cuser.cuserimg),
+
                     ),
+
                   ),
               ],
               ),
@@ -82,10 +88,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 15.0),
-                              child: Text("\$ 1000",style: TextStyle(fontSize: 35,color: Colors.white),),
+                              child: Text("\$ ${profileModel[0].currentEarning}",style: TextStyle(fontSize: 35,color: Colors.white),),
                             ),
-
-
                           ],
                         ),
                       ),
@@ -271,3 +275,4 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 }
+

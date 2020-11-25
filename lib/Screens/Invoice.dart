@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:freelance/Models/Transaction.dart';
 import 'package:freelance/Widgets/bottomnavigation.dart';
 import 'package:freelance/data/data.dart';
 
 class Invoice extends StatefulWidget {
 
- // final int earning;
-
- // Invoice({this.earning});
   @override
   _InvoiceState createState() => _InvoiceState();
 }
 
 class _InvoiceState extends State<Invoice> {
-  int earning=10000;
+  int earning=profileModel[0].currentEarning;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +29,7 @@ class _InvoiceState extends State<Invoice> {
                   borderRadius: BorderRadius.all(Radius.circular(5.0),),
                   color: Colors.lightBlue,
                 ),
-                child: Text('Earning:    \$ ${earning.toString()}',style: TextStyle(fontSize: 20.0,color: Colors.white,fontWeight: FontWeight.bold)),
+                child: Text('Earning:    \$ ${profileModel[0].currentEarning.toString()}',style: TextStyle(fontSize: 20.0,color: Colors.white,fontWeight: FontWeight.bold)),
               ),
             ),
             Padding(

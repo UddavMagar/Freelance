@@ -17,6 +17,8 @@ class _RegisterState extends State<Register> {
   final picker = ImagePicker();
   bool showFirst = true;
   bool loading = false;
+  File _image;
+
 
 
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -32,18 +34,19 @@ class _RegisterState extends State<Register> {
 
 
   Future _selectimage()async{
-    final _imagefile = await picker.getImage(source: ImageSource.gallery);
+
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
-      _user.userImg=_imagefile;
+      if (pickedFile != null) {
+        _user.userImg = pickedFile;
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
     });
   }
 
-  bool ispicked(){
-    if(_imagefile==null)
-      return true;
-    else
-      return false;
-  }
+
 
 
 
@@ -88,6 +91,8 @@ class _RegisterState extends State<Register> {
           _user.id = res.user.uid;
 
           showFirst = false;
+          await _store.collection('users').add(_user.toMap());
+          Navigator.pushNamed(context, 'login');
 
 
         }
@@ -95,8 +100,6 @@ class _RegisterState extends State<Register> {
         else{
           showInSnackBar('User Already Existed');
         }
-
-
 
       }
 
@@ -107,8 +110,6 @@ class _RegisterState extends State<Register> {
         showInSnackBar(e.toString());
       }
     }
-    await _store.collection('users').add(_user.toMap());
-    return Navigator.pushNamed(context, 'login');
   }
 
   @override
@@ -135,9 +136,9 @@ class _RegisterState extends State<Register> {
                       child: CircleAvatar(
                         radius: 30.0,
                         backgroundColor: Colors.lightBlue,
-                        backgroundImage: ispicked()? null: FileImage(File(_user.userImg.path)),
-                        child: ispicked()?
-                        Icon(Icons.add_photo_alternate,size: 30.0,color: Colors.white,):null,
+                        backgroundImage: _image==null? null : AssetImage(_user.userImg.path),
+                        child: _image==null?
+                        Icon(Icons.add_photo_alternate,size: 30.0,color: Colors.white,): null,
                       ),
                     ),
                   ),

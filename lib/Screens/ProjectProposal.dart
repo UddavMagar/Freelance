@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelance/Screens/proposalsubmit.dart';
 
+
 class Projectproposal extends StatefulWidget {
   final String proposalProjectName;
   final String proposalProjectDescription;
@@ -14,7 +15,8 @@ class Projectproposal extends StatefulWidget {
 
 class _ProjectproposalState extends State<Projectproposal> {
 
-  int money=10000;
+  int money=100;
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,8 +87,8 @@ class _ProjectproposalState extends State<Projectproposal> {
                         ),
                         child: Slider(
                           value: money.toDouble(),
-                          min: 500.0,
-                          max: 10000.0,
+                          min: 5.0,
+                          max: 100.0,
                           onChanged: (double value){
                             setState(() {
                               money=value.round();
@@ -105,16 +107,23 @@ class _ProjectproposalState extends State<Projectproposal> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 15.0),
-              child: Container(
-                height:40,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(2)),
-                  border: Border.all(width: 1.0, color: Colors.lightBlue[200]),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Upload Files',style: TextStyle(color: Colors.lightBlue,)),
+              child: GestureDetector(
+                onTap: (){
+                  setState(() {
+                    Navigator.pushNamed(context, 'upload');
+                  });
+                },
+                child: Container(
+                  height:40,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(2)),
+                    border: Border.all(width: 1.0, color: Colors.lightBlue[200]),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Upload Files',style: TextStyle(color: Colors.lightBlue,)),
+                  ),
                 ),
               ),
             ),

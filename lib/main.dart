@@ -8,9 +8,9 @@ import 'package:freelance/Screens/Login.dart';
 import 'package:freelance/Screens/Profile.dart';
 import 'package:freelance/Screens/Register.dart';
 import 'package:freelance/Screens/Splashscreen.dart';
+import 'package:freelance/Screens/Upload.dart';
 import 'package:freelance/Screens/currentJob.dart';
 import 'package:freelance/Screens/submittedfinal.dart';
-import 'package:freelance/Widgets/bottomnavigation.dart';
 import 'Screens/Allprojects.dart';
 import 'Screens/ProjectProposal.dart';
 
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
         'profile':(context)=>Profile(),
         'final': (context)=>Submittedfinal(),
         'register':(context)=>Register(),
+        'upload': (context)=>FilePickerDemo(),
       }
 
     );

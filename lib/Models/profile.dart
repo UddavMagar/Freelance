@@ -7,6 +7,7 @@ class profilemodel{
   int totalEarning;
   int totalJobs;
   int hoursworked;
+  int currentEarning;
   List expertise;
 
 
@@ -16,6 +17,7 @@ class profilemodel{
     this.profiledescription,
     this.skill,
     this.totalEarning,
-    this.totalJobs
+    this.totalJobs,
+    this.currentEarning
   });
 }

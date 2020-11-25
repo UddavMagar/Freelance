@@ -108,7 +108,7 @@ final List<profilemodel> profileModel = [
 
 final _profilemodel1 = profilemodel(skill: 'Android Developer',
     profiledescription: 'I have been Designing and developing advanced applications for the Android platform for 7 years. My strengths are Unit-testing code for robustness, including edge cases, usability, general reliability, Bug fixing and improving application performance',
-    hourlyrate: 32,totalEarning: 10,totalJobs: 30,hoursworked: 1500,expertise: ['Excel','cloud','database','app developer','UI design','UX design','swift']
+    hourlyrate: 32,totalEarning: 10,totalJobs: 30,hoursworked: 1500,currentEarning:1000,expertise: ['Excel','cloud','database','app developer','UI design','UX design','swift']
 );
 
 

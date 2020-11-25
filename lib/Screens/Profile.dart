@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:freelance/Models/currentuser.dart';
+import 'package:freelance/Screens/Login.dart';
 import 'package:freelance/Widgets/bottomnavigation.dart';
 import 'package:freelance/data/data.dart';
 
@@ -8,12 +11,40 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
+
+  Future signout() async{
+    try{
+      return await FirebaseAuth.instance.signOut();
+    }
+    catch(e){
+      print(e.toString());
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Center(child: Text('Profile',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.person),
+              tooltip: 'LogOut',
+              onPressed: () {
+                signout();
+                Navigator.pushReplacementNamed(context, 'login');
+              },
+            ),
+            GestureDetector(
+                onTap: (){
+                  signout();
+                  Navigator.pushReplacementNamed(context, 'login');
+                },
+                child: Center(child: Text('LogOut'))),
+          ],
         ),
         body:
         Column(
@@ -29,13 +60,13 @@ class _ProfileState extends State<Profile> {
                     children: [
                       CircleAvatar(
                         radius: 25.0,
-                        backgroundImage: AssetImage('images/myphoto.png'),
+                        backgroundImage: AssetImage(cuser.cuserimg),
                       ),
                       Column(
                         children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 50.0),
-                          child: Text('Uddav',style: TextStyle(fontSize: 20,color: Colors.black87,fontWeight: FontWeight.bold),),
+                          child: Text(cuser.cuserName,style: TextStyle(fontSize: 20,color: Colors.black87,fontWeight: FontWeight.bold),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 50.0),

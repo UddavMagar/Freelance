@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freelance/Models/Login.dart';
+import 'package:freelance/Models/currentuser.dart';
+import 'package:freelance/Screens/Dashboard.dart';
+
 
 
 class Login extends StatefulWidget {
@@ -13,7 +16,6 @@ class Login extends StatefulWidget {
 
 LoginId _LoginId= LoginId();
 bool loading = false;
-
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 FirebaseFirestore _store = FirebaseFirestore.instance;
@@ -27,6 +29,11 @@ void showInSnackBar(String value) {
 
 
 class _LoginState extends State<Login> {
+
+  String currentusername;
+  String currentuserImg;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,10 +136,20 @@ class _LoginState extends State<Login> {
                                       var res = await _auth.signInWithEmailAndPassword(
                                           email:_LoginId.loginEmail,
                                           password:  _LoginId.loginPassword);
-                                      Navigator.pushNamed(context, 'dashboard');
                                       setState(() {
                                         loading = false;
                                       });
+                                        if(res.user.uid!=null) {
+                                          var res = await _store.collection('users').get();
+
+                                          for (int i = 0; i < res.docs.length; i++) {
+                                                var result = res.docs;
+                                                cuser.cuserName = result[i]["name"];
+                                                cuser.cuserimg = result[i]["userImg"];
+                                          }
+                                        }
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (context) => DashBoard()));
 
 
                                     }

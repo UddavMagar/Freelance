@@ -70,9 +70,14 @@ class _JobsState extends State<Jobs> {
                   borderRadius: BorderRadius.all(Radius.circular(2)),
                   border: Border.all(width: 1.0, color: Colors.lightBlue[200]),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Upload Files',style: TextStyle(color: Colors.lightBlue,)),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, 'upload');
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Upload Files',style: TextStyle(color: Colors.lightBlue,)),
+                  ),
                 ),
               ),
             ),
